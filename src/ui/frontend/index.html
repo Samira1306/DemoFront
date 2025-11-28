@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager UI</title><link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/ui/assets/styles.css?v=3">
+
+  <link rel="stylesheet" href="/ui/assets/styles.css?v=3" />
+</head>
+
+<body>
+  <div class="min-h-screen bg-gray-50 m-4">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-6 flex items-center justify-center flex-col">
+        <div class="text-center px-3">
+          <h1 class="text-2xl font-semibold">Mis Tareas</h1>
+          <p class="text-sm text-gray-600">Organiza tus tareas rápidamente</p>
+        </div>
+      </header>
+
+      <div class="mb-6 flex items-center gap-4">
+        <input id="search" placeholder="Buscar tareas..."
+          class="w-full rounded-md border-input bg-input-background px-4 py-3" />
+        <div class="text-sm text-gray-500">Total: <span id="total-count">0</span></div>
+      </div>
+
+      <div>
+        <div id="loading" class="loading-overlay hidden">
+          <div class="spinner"></div>
+        </div>
+
+        <div class="tasks-columns grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section>
+            <h3 class="column-title">Pendientes: <span id="pending-count" class="count">0</span></h3>
+            <div id="pending-empty" class="text-center py-6 text-gray-500 hidden">No hay tareas pendientes</div>
+            <ul id="pending-list" class="grid gap-4"></ul>
+          </section>
+
+          <section>
+            <h3 class="column-title">Completadas <span id="completed-count" class="count">0</span></h3>
+            <div id="completed-empty" class="text-center py-6 text-gray-500 hidden">No hay tareas completadas</div>
+            <ul id="completed-list" class="grid gap-4"></ul>
+          </section>
+        </div>
+
+        <div class="mt-6 text-center">
+          <button id="open-create" class="btn btn-primary btn-lg">+ Agregar tarea</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-panel">
+      <h2 id="modal-title" class="text-lg font-semibold">Nueva tarea</h2>
+      <form id="modal-form" class="mt-4">
+        <input id="modal-title-input" placeholder="Título"
+          class="w-full rounded-md border-input bg-input-background px-4 py-2" required />
+        <textarea id="modal-desc-input" placeholder="Descripción (opcional)"
+          class="w-full rounded-md border-input bg-input-background px-4 py-2 mt-3" rows="3"></textarea>
+
+        <div class="form-row mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="modal-due-input" class="form-label">Fecha vencimiento</label>
+            <input id="modal-due-input" type="date"
+              class="w-full rounded-md border-input bg-input-background px-3 py-2" />
+          </div>
+          <div>
+            <label for="modal-priority-input" class="form-label">Prioridad</label>
+            <select id="modal-priority-input" class="w-full rounded-md border-input bg-input-background px-3 py-2">
+              <option value="0">Baja</option>
+              <option value="1">Media</option>
+              <option value="2">Alta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label for="modal-status-input" class="form-label">Estado</label>
+          <select id="modal-status-input" class="w-full rounded-md border-input bg-input-background px-3 py-2">
+            <option value="0">Pendiente</option>
+            <option value="1">Completada</option>
+          </select>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-200">
+          <button type="button" id="modal-cancel" class="btn">Cancelar</button>
+          <button type="submit" id="modal-save" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="/ui/assets/app.js?v=3"></script>
+</body>
+
+</html>
