@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Manager UI</title><link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/ui/assets/styles.css?v=3">
+  <title>Task Manager UI</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" rel="stylesheet">
+  <!-- ❗ Corregido: antes había dos líneas, ahora solo una -->
   <link rel="stylesheet" href="/ui/assets/styles.css?v=3" />
 </head>
 
@@ -58,6 +59,7 @@
       <form id="modal-form" class="mt-4">
         <input id="modal-title-input" placeholder="Título"
           class="w-full rounded-md border-input bg-input-background px-4 py-2" required />
+
         <textarea id="modal-desc-input" placeholder="Descripción (opcional)"
           class="w-full rounded-md border-input bg-input-background px-4 py-2 mt-3" rows="3"></textarea>
 
