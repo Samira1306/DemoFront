@@ -1,12 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-
 import "@testing-library/jest-dom";
 
-// -----------------------------------------------------------------------------
-// DOM mínimo necesario para que app.js no falle al cargarse
-// -----------------------------------------------------------------------------
 beforeEach(() => {
   document.body.innerHTML = `
     <div id="loading" class="hidden"></div>
@@ -40,13 +33,11 @@ beforeEach(() => {
     <input id="search" />
   `;
 
-  // mocks globales
   global.fetch = jest.fn();
   global.showToast = jest.fn();
   global.load = jest.fn();
 });
 
-// IMPORTAMOS TU CÓDIGO DESPUÉS de crear el DOM
 import {
     createTask,
     deleteTask,
@@ -56,10 +47,6 @@ import {
     toggleComplete
 } from "../../src/ui/frontend/app.js";
 
-
-// -----------------------------------------------------------------------------
-// isCompleted()
-// -----------------------------------------------------------------------------
 describe("isCompleted()", () => {
 
   test("devuelve true si status = 1", () => {
@@ -76,9 +63,6 @@ describe("isCompleted()", () => {
 
 });
 
-// -----------------------------------------------------------------------------
-// fetchTasks()
-// -----------------------------------------------------------------------------
 describe("fetchTasks()", () => {
 
   test("devuelve tareas si fetch es correcto", async () => {
@@ -118,9 +102,6 @@ describe("createTask()", () => {
 
 });
 
-// -----------------------------------------------------------------------------
-// deleteTask()
-// -----------------------------------------------------------------------------
 describe("deleteTask()", () => {
 
   test("DELETE correcto devuelve true", async () => {
@@ -138,9 +119,6 @@ describe("deleteTask()", () => {
 
 });
 
-// -----------------------------------------------------------------------------
-// toggleComplete()
-// -----------------------------------------------------------------------------
 describe("toggleComplete()", () => {
 
   test("cambia estado y hace PUT", async () => {
@@ -164,9 +142,6 @@ describe("toggleComplete()", () => {
 
 });
 
-// -----------------------------------------------------------------------------
-// makeTaskElement()
-// -----------------------------------------------------------------------------
 describe("makeTaskElement()", () => {
 
   test("crea el elemento con título y clases correctas", () => {
